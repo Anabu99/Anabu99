@@ -1,25 +1,60 @@
-<DOCTYPE html>
-<html>
-<head> 
-      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <title>D0nut Ninja</title>
-	 <link rel="stylesheet" href="style.css">
+<details>
+<summary>Click to see a typing effect</summary>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Hello World</title>
+  <style>
+    .typing {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 2em;
+      border-right: 2px solid;
+      width: 15ch;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(15) 1s 1 normal both, blink 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 15ch;
+      }
+    }
+    
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-        <h1>&#128062;<span class="auto-type"></span></h1>	
-	</div>
+  <div class="typing">Hello, World!</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-	
-	<script>
-	  var typed= new Typed(".auto-type", {
-	    strings:["Hello Bug Hunters!","Remember","Compile snacks, not errors!","Code is poetry, bugs are plot twists", "Stay un-bugged!"],
-        typespeed: 2000,
-	    backspeed: 1000,
-	    loop: true
-	  })
-	  </script>
+  <script>
+    // This script ensures the typing effect works for GitHub markdown.
+    window.addEventListener('load', function() {
+      const element = document.querySelector('.typing');
+      let text = element.textContent;
+      element.textContent = '';
+      
+      let i = 0;
+      let interval = setInterval(function() {
+        element.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+        }
+      }, 200);
+    });
+  </script>
 </body>
-</html>	
+</html>
+
+</details>
